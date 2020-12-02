@@ -103,5 +103,5 @@ void deposit(){
 
 void withdraw(){
     printf("\nyou are in withdraw section");
-    printf("\nclone successfull");
+    printf("\nclone successfull"):
 }
