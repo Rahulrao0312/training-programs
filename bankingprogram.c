@@ -4,6 +4,7 @@
 void createaccount();
 void deposit();
 void withdraw();
+void accountdetails();
 
 struct account{
     char name_of_the_acc_holder[20];
@@ -16,12 +17,29 @@ struct account{
 
 
 int main(){
-    printf("good till now\n");
-    //createaccount();
-    //deposit();
-    withdraw();
-    
+    int choice;
+    while(1){
+    printf("\n");
+    printf("\n");
+    printf("\n1.createaccount");
+    printf("\n2.Cash deposit");
+    printf("\n3.cash withdraw");
+    printf("\n4.view account details");
+    printf("\n5.Exit");
+    printf("\nEnter your choice");
+    scanf("%d",&choice);
+    switch(choice){
+        case 1:createaccount();break;
+        case 2:deposit();break;
+        case 3:withdraw();break;
+        case 4:accountdetails();break;
+        case 5:return 0;
+        default:printf("\nWRONG CHOICE");break;
+    }
+
    
+    }
+    
     return 0;
 }
 
@@ -82,6 +100,9 @@ void deposit(){
         printf("\nyour previous account balance was %d",accountinfo.amount);
         accountinfo.amount+=depositamt;
         printf("\nYour updated account balance is %d",accountinfo.amount);
+        printf("\n");
+        printf("\n");
+        printf("\nDEPOSIT SUCCESSFULL");
         }
     else{
     printf("\nYOUR PIN WAS WRONG OR ACCOUNT DOES NOT EXIST");
@@ -102,6 +123,54 @@ void deposit(){
 
 
 void withdraw(){
-    printf("\nyou are in withdraw section");
-    printf("\nclone successfull"):
+    int acc_no;
+    int pin;
+    int withdrawamt;
+    int choice;
+    printf("\nEnter your account no:");
+    scanf("%d",&acc_no);
+    printf("\nEnter your pin number");
+    scanf("%d",&pin);
+    if(accountinfo.acc_no==acc_no && accountinfo.pin==pin){
+         printf("\nEnter the amount you want to withdraw");
+        scanf("%d",&withdrawamt);
+       if(accountinfo.amount<withdrawamt){
+           printf("\nINSUFFICIENTBALANCE");
+       }
+       else{
+           printf("\nYour previous account balance was %d",accountinfo.amount);
+           accountinfo.amount-=withdrawamt;
+           printf("\nYour withdrawn amount is %d",withdrawamt);
+           printf("\nYour current balance is %d",accountinfo.amount);
+           printf("\n");
+           printf("\n");
+           printf("\nWITHDRAW SUCCESSFULL");
+
+       }
+
+    }
+    else{
+    printf("\nYOUR PIN WAS WRONG OR ACCOUNT DOES NOT EXIST");
+    printf("\n1.Createaccount");
+    printf("\nEnter your choice");
+    scanf("%d",&choice);
+     switch(choice){
+         case 1:createaccount();break;
+         default:printf("\nEnd of your banking session");
+
+    }  
+}
+}
+
+void accountdetails(){
+    printf("\nyour name in our files is recorded as: %s",accountinfo.name_of_the_acc_holder);
+   printf("\nyour account number is: %d",accountinfo.acc_no);
+   printf("\nyour account balance is %d",accountinfo.amount);
+   printf("\nyou are banking through the bank: %s",accountinfo.bank_name);
+   printf("\nyour home branch is: %s",accountinfo.branch_name);
+   printf("\nYour pin number for ATM transcations is:%d",accountinfo.pin);
+   printf("\n");
+   printf("\n");
+   printf("\nACCOUNT STATUS:UP AND RUNNING\n");
+
 }
